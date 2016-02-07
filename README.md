@@ -1,2 +1,2 @@
 # lolsave
-A tiny Chrome extension and bookmarklet to save your reading place on lolcow.farm
+A tiny boomarklet that saves and restores your viewing place on _lolcow.farm_
