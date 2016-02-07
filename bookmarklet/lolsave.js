@@ -23,11 +23,21 @@ function add_save_button() {
   document.body.appendChild(a)
 }
 
+
+// Gets the save button element, returns null if not there
+function get_save_button() {
+  return document.getElementById('lolsave-btn');
+}
+
+
+
 // Check we're on the right website
 if (hostname(document.location.href) === 'lolcow.farm') {
   // Check we're on reply mode
   if (/https:\/\/lolcow.farm\/.+\/res\/\d+\.html/.test(document.location.href)) {
-    add_save_button();
+    if (!get_save_button()) {
+      add_save_button();
+    }
   } else {
     alert('You need to be on thread reply mode to use lolsave.')
   }
