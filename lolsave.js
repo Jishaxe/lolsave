@@ -34,7 +34,7 @@ function get_save_button() {
 // Check we're on the right website
 if (hostname(document.location.href) === 'lolcow.farm') {
   // Check we're on reply mode
-  if (/https:\/\/lolcow.farm\/.+\/res\/\d+\.html/.test(document.location.href)) {
+  if (!/https:\/\/lolcow.farm\/.+\/res\/\d+\.html/.test(document.location.href)) {
     if (!get_save_button()) {
       add_save_button();
     }
