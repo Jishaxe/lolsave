@@ -1,0 +1,19 @@
+{
+  "src_folders": ["test/cases"],
+  "output_folder": "test/reports",
+  "test_workers": true,
+  "selenium": {
+    "start_process": true,
+    "start_session": true,
+    "server_path": "test/selenium.jar"
+  },
+
+  "test_settings" : {
+    "default": {
+      "launch_url": "https://lolcow.farm",
+      "globals": {
+        "retryAssertionTimeout": 10000
+      }
+    }
+  }
+}
