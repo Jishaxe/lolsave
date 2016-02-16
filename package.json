@@ -1,0 +1,22 @@
+{
+  "name": "lolsave",
+  "version": "0.0.1",
+  "description": "A tiny bookmarklet that saves and restores your viewing place on lowcow.farm",
+  "main": "lolsave.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "nightwatch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jishaxe/lolsave.git"
+  },
+  "author": "Josh Lee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jishaxe/lolsave/issues"
+  },
+  "homepage": "https://github.com/Jishaxe/lolsave#readme"
+}
