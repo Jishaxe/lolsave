@@ -4,6 +4,11 @@ function hostname(url) {
   if ( match != null && match.length > 2 && typeof match[2] === 'string' && match[2].length > 0 ) return match[2];
 }
 
+// Adds the indicator div
+function add_indicator() {
+}
+
+
 // Adds the save button on the page, right above Quick Reply
 function add_save_button() {
   var a = document.createElement("a");
@@ -35,9 +40,11 @@ function get_save_button() {
 if (hostname(document.location.href) === 'lolcow.farm') {
   // Check we're on reply mode
   if (!/https:\/\/lolcow.farm\/.+\/res\/\d+\.html/.test(document.location.href)) {
-    if (!get_save_button()) {
-      add_save_button();
-    }
+    // We're on a thread page, add an indicator to show lolsave is loaded
+    var indicator = document.createElement("span")
+    indicator.id = "lolsave-indicator"
+    document.body.appendChild(indicator)
+
   } else {
     alert('You need to be on thread reply mode to use lolsave.')
   }
