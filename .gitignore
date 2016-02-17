@@ -1,3 +1,4 @@
 test/selenium.jar
 test/reports/*
+builds/*.js
 *.log
