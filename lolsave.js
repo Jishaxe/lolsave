@@ -77,7 +77,29 @@ function open_first_time_popup() {
 }
 
 function open_not_on_thread_popup() {
-  alert('You need to be in thread reply mode to use lolsave.')
+  if ($("#lolsave-popup-not-on-thread").length === 0) {
+    $('body').append('<div id="lolsave-popup-not-on-thread" style="position: fixed;   \
+                                                              opacity: 0;\
+                                                              width: 50vw;         \
+                                                              box-sizing: border-box; \
+                                                              padding: 25px;\
+                                                              max-width: 450px; \
+                                                              top: 10vh;           \
+                                                              left: 50vw;          \
+                                                              margin-left: -25vw;  \
+                                                              background-color: white; \
+                                                              border: 1px solid grey;">\
+    <h2 style="text-align: left;">You need to be on <i>thread reply mode</i> to save your place!</h2>\
+    <a href="javascript:void(0)" style="float: right;">Aight</a>\
+    </div>')
+
+    $("#lolsave-popup-not-on-thread").animate({opacity: 1}, 150)
+    $("#lolsave-popup-not-on-thread").click(function() {
+      $("#lolsave-popup-not-on-thread").animate({opacity: 0}, 150, function() {
+        $(this).remove();
+      })
+    })
+  }
 }
 
 
@@ -94,12 +116,14 @@ if (hostname(document.location.href) === 'lolcow.farm') {
     if (readCookie('lolsave-used') === null) {
       // It's our first time, show a popup
       // And set the cookie for next times
-      //createCookie("lolsave-used", "true", 365)
+      createCookie("lolsave-used", "true", 365)
       open_first_time_popup()
     }
   } else {
+    // We're not on a thread!
     open_not_on_thread_popup()
   }
 } else {
+  // We're not on lolcow.farm!
   alert('You need to be on lolcow.farm to use lolsave.');
 }
