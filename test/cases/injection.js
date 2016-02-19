@@ -13,13 +13,13 @@ module.exports = {
     browser.expect.element("#lolsave-indicator").to.be.present.before(1000)
     browser.end()
   },
-
+  /*
   'Check lolsave pops up an alert when not loaded on lolcow' : function (browser) {
     browser.url('http://www.google.com')
     browser.execute(lolsave)
     browser.expect.element("#lolsave-popup-not-on-site").to.be.present.before(1000)
     browser.end()
-  },
+  },*/
 
   'Check lolsave pops up an alert when not loaded on a thread' : function (browser) {
     browser.init()
