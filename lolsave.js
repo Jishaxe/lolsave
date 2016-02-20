@@ -108,9 +108,17 @@ if (hostname(document.location.href) === 'lolcow.farm') {
   // Check we're on reply mode
   if (/https:\/\/lolcow.farm\/.+\/res\/\d+\.html/.test(document.location.href)) {
     // We're on a thread page, add an indicator to show lolsave is loaded
-    var indicator = document.createElement("span")
-    indicator.id = "lolsave-indicator"
-    document.body.appendChild(indicator)
+
+
+    if ($("#lolsave-indicator").length === 0) {
+      var indicator = document.createElement("span")
+      indicator.id = "lolsave-indicator"
+      document.body.appendChild(indicator)
+
+      setInterval(save, 10000, 10000)
+    }
+
+    save()
 
     // Check if it's our first time
     if (readCookie('lolsave-used') === null) {
