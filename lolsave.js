@@ -94,7 +94,7 @@ function open_not_on_thread_popup() {
     </div>')
 
     $("#lolsave-popup-not-on-thread").animate({opacity: 1}, 150)
-    $("#lolsave-popup-not-on-thread").click(function() {
+    $("#lolsave-popup-not-on-thread a").click(function() {
       $("#lolsave-popup-not-on-thread").animate({opacity: 0}, 150, function() {
         $(this).remove();
       })
