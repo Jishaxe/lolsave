@@ -121,9 +121,13 @@ if (hostname(document.location.href) === 'lolcow.farm') {
     }
   } else {
     // We're not on a thread!
-    open_not_on_thread_popup()
+    if (typeof(jQuery)=='function')
+      open_not_on_thread_popup()
+    else
+      alert('You need to be on a thread to use lolsave!')
+
   }
 } else {
   // We're not on lolcow.farm!
-  alert('You need to be on lolcow.farm to use lolsave.');
+  alert('You need to be on lolcow.farm to use lolsave!');
 }
