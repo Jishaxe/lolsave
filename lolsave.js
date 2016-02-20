@@ -102,6 +102,45 @@ function open_not_on_thread_popup() {
   }
 }
 
+// Grabs the post on the half of the window and saves it
+function save() {
+    var $post = $(document.elementFromPoint(50, $(window).height() / 2 + 10)).closest(".post.reply").get()[0]
+
+    if ($post == null) {
+      var $post = $(document.elementFromPoint(50, $(window).height() / 2 + 20)).closest(".post.reply").get()[0]
+    }
+
+    var thread_id = document.location.href.match(/\d\d\d\d\d/)[0]
+    var post_id = $post.id.match(/\d\d\d\d\d/)[0]
+
+    createCookie("lolsave-thread-" + thread_id, post_id, 30)
+
+    $($post).addClass("lolsave-selected")
+    $($post).css({"border-bottom": "2px solid #117743", "border-radius": "0 0 5px 5px", "transition": "0.2s"})
+
+    $(".lolsave-selected").each(function() {
+      if (this !== $post) {
+        $(this).css({"border-bottom": "inherit", "border-radius": "inherit"})
+        $(this).removeClass("lolsave-selected")
+      }
+    })
+
+    $(".lolsave-notice").remove()
+    $(".quick-reply-btn").before($('\
+      <span class="lolsave-notice" style="opacity: 0; position: fixed; right: 20px; bottom: 105px; color: #117743;">\
+        lolsaved\
+      </span>\
+    '))
+
+    $(".lolsave-notice").animate({opacity:1}, 500)
+
+    setTimeout(function() {
+      $(".lolsave-notice").animate({opacity:0}, 500, function() {
+        $(".lolsave-notice").remove()
+      })
+    }, 3000)
+}
+
 
 // Check we're on the right website
 if (hostname(document.location.href) === 'lolcow.farm') {
