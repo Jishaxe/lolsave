@@ -4,7 +4,7 @@ var lolsave = fs.readFileSync('lolsave.js').toString()
 module.exports = {
   'Check the bookmarklet is injected successfully' : function (browser) {
     browser.init()
-    browser.click('a[href="/b/index.html"]')
+    //browser.click('a[href="/b/index.html"]')
     browser.url('https://lolcow.farm/b/res/71092.html')
     browser.useXpath()
     //browser.resizeWindow(1200, 1200)
@@ -34,7 +34,7 @@ module.exports = {
 
   'Check lolsave pops up an alert when it is the first use' : function (browser) {
     browser.init()
-    browser.click('a[href="/b/index.html"]')
+    //browser.click('a[href="/b/index.html"]')
     browser.useXpath()
     browser.url('https://lolcow.farm/b/res/71092.html')
     //browser.resizeWindow(1200, 1200)
