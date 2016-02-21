@@ -107,7 +107,7 @@ function save() {
     var $post = $(document.elementFromPoint(50, $(window).height() / 2 + 10)).closest(".post.reply").get()[0]
 
     if ($post == null) {
-      var $post = $(document.elementFromPoint(50, $(window).height() / 2 + 20)).closest(".post.reply").get()[0]
+      var $post = $(document.elementFromPoint(50, $(window).height() / 2 + 45)).closest(".post.reply").get()[0]
     }
 
     var thread_id = document.location.href.match(/\d\d\d\d\d/)[0]
@@ -155,7 +155,7 @@ if (hostname(document.location.href) === 'lolcow.farm') {
       createCookie("lolsave-used", "true", 365)
       open_first_time_popup()
     }
-    
+
     if ($("#lolsave-indicator").length === 0) {
       var indicator = document.createElement("span")
       indicator.id = "lolsave-indicator"
