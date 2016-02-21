@@ -148,7 +148,14 @@ if (hostname(document.location.href) === 'lolcow.farm') {
   if (/https:\/\/lolcow.farm\/.+\/res\/\d+\.html/.test(document.location.href)) {
     // We're on a thread page, add an indicator to show lolsave is loaded
 
-
+    // Check if it's our first time
+    if (readCookie('lolsave-used') === null) {
+      // It's our first time, show a popup
+      // And set the cookie for next times
+      createCookie("lolsave-used", "true", 365)
+      open_first_time_popup()
+    }
+    
     if ($("#lolsave-indicator").length === 0) {
       var indicator = document.createElement("span")
       indicator.id = "lolsave-indicator"
@@ -158,14 +165,6 @@ if (hostname(document.location.href) === 'lolcow.farm') {
     }
 
     save()
-
-    // Check if it's our first time
-    if (readCookie('lolsave-used') === null) {
-      // It's our first time, show a popup
-      // And set the cookie for next times
-      createCookie("lolsave-used", "true", 365)
-      open_first_time_popup()
-    }
   } else {
     // We're not on a thread!
     if (typeof(jQuery)=='function')
