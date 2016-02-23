@@ -6,37 +6,37 @@
 ///////////////////
 // Cookie manipulation stuff (from QuirksMode)
 function createCookie(name, value, days) {
-    var expires;
+  var expires;
 
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toGMTString();
-    } else {
-        expires = "";
-    }
-    document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + "; path=/";
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toGMTString();
+  } else {
+    expires = "";
+  }
+  document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + "; path=/";
 }
 
 function readCookie(name) {
-    var nameEQ = encodeURIComponent(name) + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
-    }
-    return null;
+  var nameEQ = encodeURIComponent(name) + "=";
+  var ca = document.cookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+  }
+  return null;
 }
 
 function eraseCookie(name) {
-    createCookie(name, "", -1);
+  createCookie(name, "", -1);
 }
 
 // Gets the hostname of the url (from stackoverflow)
 function hostname(url) {
   var match = url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
-  if ( match != null && match.length > 2 && typeof match[2] === 'string' && match[2].length > 0 ) return match[2];
+  if (match != null && match.length > 2 && typeof match[2] === 'string' && match[2].length > 0) return match[2];
 }
 
 // LIB STUFF ////////
@@ -67,9 +67,13 @@ function open_first_time_popup() {
     <a href="javascript:void(0)" style="float: right;">Aight</a>\
     </div>')
 
-    $("#lolsave-popup-first-use").animate({opacity: 1}, 150)
+    $("#lolsave-popup-first-use").animate({
+      opacity: 1
+    }, 150)
     $("#lolsave-popup-first-use a").click(function() {
-      $("#lolsave-popup-first-use").animate({opacity: 0}, 150, function() {
+      $("#lolsave-popup-first-use").animate({
+        opacity: 0
+      }, 150, function() {
         $(this).remove();
       })
     })
@@ -93,9 +97,13 @@ function open_not_on_thread_popup() {
     <a href="javascript:void(0)" style="float: right;">Aight</a>\
     </div>')
 
-    $("#lolsave-popup-not-on-thread").animate({opacity: 1}, 150)
+    $("#lolsave-popup-not-on-thread").animate({
+      opacity: 1
+    }, 150)
     $("#lolsave-popup-not-on-thread a").click(function() {
-      $("#lolsave-popup-not-on-thread").animate({opacity: 0}, 150, function() {
+      $("#lolsave-popup-not-on-thread").animate({
+        opacity: 0
+      }, 150, function() {
         $(this).remove();
       })
     })
@@ -104,41 +112,53 @@ function open_not_on_thread_popup() {
 
 // Grabs the post on the half of the window and saves it
 function save() {
-    var $post = $(document.elementFromPoint(50, $(window).height() / 2)).closest(".post.reply").get()[0]
+  var $post = $(document.elementFromPoint(50, $(window).height() / 2)).closest(".post.reply").get()[0]
 
-    if ($post == null) {
-      var $post = $(document.elementFromPoint(50, $(window).height() / 2 + 45)).closest(".post.reply").get()[0]
+  if ($post == null) {
+    var $post = $(document.elementFromPoint(50, $(window).height() / 2 + 45)).closest(".post.reply").get()[0]
+  }
+
+  var thread_id = document.location.href.match(/\d\d\d\d\d/)[0]
+  var post_id = $post.id.match(/\d\d\d\d\d/)[0]
+
+  createCookie("lolsave-thread-" + thread_id, post_id, 30)
+
+  $($post).addClass("lolsave-selected")
+  $($post).css({
+    "border-bottom": "2px solid #117743",
+    "border-radius": "0 0 5px 5px",
+    "transition": "0.2s"
+  })
+
+
+  $(".lolsave-selected").each(function() {
+    if (this !== $post) {
+      $(this).css({
+        "border-bottom": "inherit",
+        "border-radius": "inherit"
+      })
+      $(this).removeClass("lolsave-selected")
     }
+  })
 
-    var thread_id = document.location.href.match(/\d\d\d\d\d/)[0]
-    var post_id = $post.id.match(/\d\d\d\d\d/)[0]
-
-    createCookie("lolsave-thread-" + thread_id, post_id, 30)
-
-    $($post).addClass("lolsave-selected")
-    $($post).css({"border-bottom": "2px solid #117743", "border-radius": "0 0 5px 5px", "transition": "0.2s"})
-
-    $(".lolsave-selected").each(function() {
-      if (this !== $post) {
-        $(this).css({"border-bottom": "inherit", "border-radius": "inherit"})
-        $(this).removeClass("lolsave-selected")
-      }
-    })
-
-    $(".lolsave-notice").remove()
-    $(".quick-reply-btn").before($('\
+  $(".lolsave-notice").remove()
+  $(".quick-reply-btn").before($('\
       <span class="lolsave-notice" style="opacity: 0; position: fixed; right: 20px; bottom: 105px; color: #117743;">\
         lolsaved\
       </span>\
     '))
 
-    $(".lolsave-notice").animate({opacity:1}, 500)
+  $(".lolsave-notice").animate({
+    opacity: 1
+  }, 500)
 
-    setTimeout(function() {
-      $(".lolsave-notice").animate({opacity:0}, 500, function() {
-        $(".lolsave-notice").remove()
-      })
-    }, 3000)
+  setTimeout(function() {
+    $(".lolsave-notice").animate({
+      opacity: 0
+    }, 500, function() {
+      $(".lolsave-notice").remove()
+    })
+  }, 3000)
 }
 
 
@@ -167,7 +187,7 @@ if (hostname(document.location.href) === 'lolcow.farm') {
     save()
   } else {
     // We're not on a thread!
-    if (typeof(jQuery)=='function')
+    if (typeof(jQuery) == 'function')
       open_not_on_thread_popup()
     else
       alert('You need to be on a thread to use lolsave!')
