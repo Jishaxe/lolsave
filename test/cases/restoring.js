@@ -8,7 +8,7 @@ function randomInt(low, high) {
 
 var saved_post = {
   id: -1,
-  i: randomInt(1, 30)
+  i: randomInt(10, 20)
 }
 
 module.exports = {
@@ -37,7 +37,7 @@ module.exports = {
       this.assert.equal(cookie.value, saved_post.id)
     })
 
-    browser.pause(6000)
+    browser.pause(1000)
     browser.execute(function() {
       jQuery('html, body').animate({
         scrollTop: 0
@@ -48,12 +48,14 @@ module.exports = {
     browser.expect.element('.lolsave-notice').text.to.equal("lolrestored").before(1000)
     browser.execute(function(i) {
       $post = jQuery(".post.reply:nth-of-type(" + i + ")")
-
-      return $post == $(document.elementFromPoint(50, $(window).height() / 2)).closest(".post.reply").get()[0]
+      $post.css({"background-color": "purple"})
+      return $post.hasClass('lolsave-selected')
     }, [saved_post.i],
     function(result) {
       this.assert.equal(result.value, true)
     })
+
+    browser.pause(10000)
 
     browser.end()
   },
