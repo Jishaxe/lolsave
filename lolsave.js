@@ -104,7 +104,7 @@ function open_not_on_thread_popup() {
 
 // Grabs the post on the half of the window and saves it
 function save() {
-    var $post = $(document.elementFromPoint(50, $(window).height() / 2 + 10)).closest(".post.reply").get()[0]
+    var $post = $(document.elementFromPoint(50, $(window).height() / 2)).closest(".post.reply").get()[0]
 
     if ($post == null) {
       var $post = $(document.elementFromPoint(50, $(window).height() / 2 + 45)).closest(".post.reply").get()[0]

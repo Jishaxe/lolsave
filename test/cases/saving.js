@@ -1,34 +1,42 @@
 var fs = require('fs')
 var lolsave = fs.readFileSync('lolsave.js').toString()
 
-function randomInt (low, high) {
-    return Math.floor(Math.random() * (high - low) + low);
+function randomInt(low, high) {
+  return Math.floor(Math.random() * (high - low) + low)
 }
 
-var saved_post = {id: -1, i: randomInt(1, 30)}
+var saved_post = {
+  id: -1,
+  i: randomInt(1, 30)
+}
 
 module.exports = {
-  'Check lolsave saves your place when clicked' : function (browser) {
-    browser.init()
-    browser.url('https://lolcow.farm/b/res/71092.html')
-    //console.log("//div[@class='post reply'][" + randomInt(1, 30) + "]")
-    //browser.execute(lolsave)
-    browser.pause(2000)
-    saved_post.id = browser.execute(
-        function(i) {
-          $post = jQuery(".post.reply:nth-of-type(" + i + ")")
-
-          jQuery('html, body').animate({
-            scrollTop: $post.offset().top
+  'Check lolsave saves your place when clicked': function(browser) {
+    browser.url('https://lolcow.farm/b/res/72686.html')
+    browser.execute(lolsave)
+    browser.execute(
+      function(i) {
+        $post = jQuery(".post.reply:nth-of-type(" + i + ")")
+        $post.css({
+          "background-color": "red"
+        })
+        jQuery('html, body').animate({
+          scrollTop: $post.offset().top - $(window).height() / 2
         }, 500)
 
-          return [$post.id]
-        }, [saved_post.i])
-        console.log(saved_post.id)
-    browser.pause(2000)
-  //  browser.useCss()
-    //browser.click('#lolsave-popup-first-use a')
-    //browser.expect.element('#lolsave-saved').to.be.visible.before(4000)
+        return $post.attr('id')
+      }, [saved_post.i],
+      function(res) {
+        saved_post.id = res.value.match(/\d\d\d\d\d/)[0]
+        console.log('Tried to save ' + saved_post.id)
+      })
+
+    browser.click('#lolsave-popup-first-use a')
+    browser.expect.element('.lolsave-notice').to.be.present.before(10000)
+    browser.getCookie('lolsave-thread-72686', function(cookie) {
+      this.assert.equal(cookie.value, saved_post.id)
+    })
+
     browser.end()
   },
 }
