@@ -7,7 +7,7 @@ function randomInt(low, high) {
 
 var saved_post = {
   id: -1,
-  i: randomInt(1, 30)
+  i: randomInt(5, 8)
 }
 
 module.exports = {

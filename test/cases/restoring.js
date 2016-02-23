@@ -8,7 +8,7 @@ function randomInt(low, high) {
 
 var saved_post = {
   id: -1,
-  i: randomInt(10, 20)
+  i: randomInt(5, 8)
 }
 
 module.exports = {
@@ -54,9 +54,6 @@ module.exports = {
     function(result) {
       this.assert.equal(result.value, true)
     })
-
-    browser.pause(10000)
-
     browser.end()
   },
 }
