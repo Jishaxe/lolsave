@@ -116,6 +116,10 @@ function save() {
 
   if ($post == null) {
     var $post = $(document.elementFromPoint(50, $(window).height() / 2 + 45)).closest(".post.reply").get()[0]
+
+    if ($post == null) {
+      return
+    }
   }
 
   var thread_id = document.location.href.match(/\d\d\d\d\d/)[0]
