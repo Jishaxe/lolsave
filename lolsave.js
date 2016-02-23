@@ -127,25 +127,6 @@ function save() {
 
   createCookie("lolsave-thread-" + thread_id, post_id, 30)
 
-  $($post).addClass("lolsave-selected")
-  $($post).css({
-    "border-bottom": "2px solid #117743",
-    "border-top": "2px solid #117743",
-    "border-radius": "5px",
-    "transition": "0.2s"
-  })
-
-
-  $(".lolsave-selected").each(function() {
-    if (this !== $post) {
-      $(this).css({
-        "border-top": "inhereit",
-        "border-bottom": "inherit",
-        "border-radius": "inherit"
-      })
-      $(this).removeClass("lolsave-selected")
-    }
-  })
 
   $(".lolsave-notice").remove()
   $(".quick-reply-btn").before($('\
