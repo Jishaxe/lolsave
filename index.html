@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    lolsave - save your place on lolcow.farm
+  </title>
+  <style>
+    body {
+      background-color: rgb(253, 253, 254);
+    }
+
+    header {
+
+    }
+
+    section#container {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    section#hero {
+      width: 70%;
+      margin: 0 auto;
+    }
+
+    #left {
+      width: 70%;
+      display: inline-block;
+    }
+
+    #right {
+      width: 30%;
+      display: inline-block;
+      vertical-align: top;
+      text-align: right;
+    }
+
+    #bookmarklets {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    #bookmarklets::after {
+      content: '';
+      clear: both;
+    }
+
+    #bookmarklets a {
+      color: white;
+      font-size: 2em;
+      padding: 6px;
+    }
+
+    #lolsave {
+      background-color: green;
+      float: left;
+    }
+
+    #lolrestore {
+      background-color: purple;
+      float: right;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Tahoma';
+    }
+
+    h1 {
+      color: #AF0A0F;
+      font-size: 4em;
+      text-align: center;
+    }
+
+    h3 {
+      color: #666666;
+    }
+
+    p {
+      font-family: 'Verdana,Arial,Helvetica,sans-serif';
+      color: #666666;
+    }
+
+    #gifs {
+      margin-top: 100px;
+      padding: 20px;
+    }
+
+    #gifs img {
+        display: inline-block;
+        width: 50%;
+        height: auto;
+    }
+
+    @media only screen and (max-width: 573px) {
+      #bookmarklets a {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        text-align: center;
+      }
+    }
+
+    @media only screen and (max-width: 944px) {
+      #container {
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+
+      #left {
+        display: block;
+        width: 100%;
+      }
+
+      #right {
+        display: block;
+        width: 100%;
+        margin-top: 150px;
+      }
+
+      #right h4 {
+        font-size: 1.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section id="container">
+    <section id="hero">
+      <h1>lolsave</h1>
+      <div id="left">
+      <h2>the best way to save your place on <a href="http://lolcow.farm">lolcow.farm</a></h2>
+      <h3>drag these links to your bookmark bar:</h3>
+      <p id="bookmarklets"><a href="#" id="lolsave">lolsave</a><a href="#" id="lolrestore">lolrestore</a></p>
+
+      <div id="gifs">
+        <img src="http://placehold.it/500x500" alt="Gif demonstrating lolsave"/><img src="http://placehold.it/500x500" alt="Gif demonstrating lolrestore"/>
+      </div>
+    </div><div id="right">
+      <h4>some Q's</h4>
+      <h5>Am I still anonymous?</h5>
+      <p>Yep! Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</p>
+      <h5>Am I still anonymous?</h5>
+      <p>Yep! Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</p>
+      <h5>Am I still anonymous?</h5>
+      <p>Yep! Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</p>
+    </div>
+    </section>
+
+    <footer>
+      <p>lolsave has no affilitation with lolcow.farm</p>
+    </footer>
+  </section>
+</body>
+</html>
