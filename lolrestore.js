@@ -45,10 +45,9 @@ function hostname(url) {
 
 
 function restore() {
-  var thread_id = document.location.href.match(/\d\d\d\d\d/)[0]
+  var thread_id = document.location.href.match(/\d+.html/)[0].split(".")[0]
   var post_id = readCookie('lolsave-thread-' + thread_id)
   var $post = null
-
 
   if (post_id != null) {
     var $post = $("#reply_" + post_id)
