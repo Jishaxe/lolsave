@@ -8,6 +8,20 @@
   },
 
   "test_settings" : {
+    "jenkins": {
+      "launch_url": "https://lolcow.farm",
+      "desiredCapabilities": {
+        "browserName": "phantomjs",
+        "javascriptEnabled": true,
+        "acceptSslCerts": true,
+        "phantomjs.binary.path" : "~/lib/phantomjs/bin/phantomjs"
+      },
+
+      "globals": {
+        "retryAssertionTimeout": 10000
+      }
+    },
+
     "default": {
       "launch_url": "https://lolcow.farm",
       "globals": {
