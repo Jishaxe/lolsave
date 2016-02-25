@@ -14,13 +14,11 @@
     }
 
     section#container {
-      width: 80%;
+      width: 60%;
       margin: 0 auto;
     }
 
     section#hero {
-      width: 70%;
-      margin: 0 auto;
     }
 
     #left {
@@ -33,6 +31,10 @@
       display: inline-block;
       vertical-align: top;
       text-align: right;
+    }
+
+    #right p {
+      font-size: 0.8em;
     }
 
     #bookmarklets {
@@ -49,6 +51,7 @@
       color: white;
       font-size: 2em;
       padding: 6px;
+      transition: 1s;
     }
 
     #lolsave {
@@ -56,9 +59,17 @@
       float: left;
     }
 
+    #lolsave:hover {
+      background-color: purple;
+    }
+
     #lolrestore {
       background-color: purple;
       float: right;
+    }
+
+    #lolrestore:hover {
+      background-color: green;
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -80,6 +91,7 @@
       color: #666666;
     }
 
+
     #gifs {
       margin-top: 100px;
       padding: 20px;
@@ -91,6 +103,23 @@
         height: auto;
     }
 
+    footer {
+      margin-top: 20px;
+      border-top: 1px solid #CCCCCC;
+    }
+
+    footer #disclaimer {
+      float: right;
+    }
+
+    footer #buymecoffee {
+      float: left;
+    }
+
+    footer form {
+      display: inline-block;
+    }
+
     @media only screen and (max-width: 573px) {
       #bookmarklets a {
         display: block;
@@ -98,6 +127,12 @@
         padding: 10px;
         margin-top: 5px;
         text-align: center;
+      }
+
+      #gifs img {
+        display: block;
+        width: 100%;
+        margin-bottom: 20px;
       }
     }
 
@@ -142,16 +177,19 @@
     </div><div id="right">
       <h4>some Q's</h4>
       <h5>Am I still anonymous?</h5>
-      <p>Yep! Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</p>
-      <h5>Am I still anonymous?</h5>
-      <p>Yep! Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</p>
-      <h5>Am I still anonymous?</h5>
-      <p>Yep! Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</p>
+      <p>Yes. All data is <b>only</b> locally on your computer, as cookies. It is no more a threat to your anonymity than your browser history.
+        lolsave will <b>never</b> send your data anywhere else.
+        If you want to check this for yourself, you can look at the <a href="https://github.com/Jishaxe/lolsave">source code on github.</a></p>
+      <h5>How can I use the bookmarklets on iPhone/Android?</h5>
+      <p>Here's a <a href="#">quick guide.</a></p>
+      <h5>How can I delete the data lolsave saves?</h5>
+      <p>All you need to do is <a href="http://www.digitaltrends.com/computing/how-to-delete-cookies-in-chrome-firefox-safari-and-ie/">clear your cookies.</a></p>
     </div>
     </section>
 
     <footer>
-      <p>lolsave has no affilitation with lolcow.farm</p>
+      <p id="disclaimer">lolsave has no affilitation with lolcow.farm</p><p id="buymecoffee"><a href="https://paypal.me/jshxe/5">buy me a coffee?</a></p>
+      </p>
     </footer>
   </section>
 </body>
