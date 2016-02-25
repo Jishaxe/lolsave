@@ -14,7 +14,7 @@
         "browserName": "phantomjs",
         "javascriptEnabled": true,
         "acceptSslCerts": true,
-        "phantomjs.binary.path" : "/root/lib/phantomjs/bin/phantomjs"
+        "phantomjs.binary.path" : "/var/lib/jenkins/phantomjs/bin/phantomjs"
       },
 
       "globals": {
