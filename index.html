@@ -168,7 +168,7 @@
 <body>
   <section id="container">
     <section id="hero">
-      <h1>lolsave</h1>
+      <h1>lolsave</h1> <p>v<span id="version"></span></p>
       <div id="left">
       <h2>the best way to save your place on <a href="http://lolcow.farm">lolcow.farm</a></h2>
       <h3>drag these links to your bookmark bar:</h3>
@@ -195,5 +195,33 @@
       </p>
     </footer>
   </section>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $.getJSON("package.json", function(json) {
+        $("#version").text(json.version)
+      })
+
+      $.ajax({
+        method: 'GET',
+        url: 'builds/lolsave-bookmarklet.js',
+        beforeSend: function(xhr) {
+          xhr.overrideMimeType("text/plain")
+        }
+      }).done(function(data) {
+        $("#lolsave").attr('href', data)
+      })
+
+      $.ajax({
+        method: 'GET',
+        url: 'builds/lolrestore-bookmarklet.js',
+        beforeSend: function(xhr) {
+          xhr.overrideMimeType("text/plain")
+        }
+      }).done(function(data) {
+        $("#lolrestore").attr('href', data)
+      })
+    })
+  </script>
 </body>
 </html>
