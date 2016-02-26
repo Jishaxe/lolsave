@@ -2,6 +2,7 @@
 <html>
 <head>
   <link rel="icon" type="image/png" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
     lolsave - save your place on lolcow.farm
   </title>
@@ -73,6 +74,12 @@
       background-color: green;
     }
 
+    #usingaphone {
+      clear: both;
+      text-align: center;
+      margin-top: 100px;
+    }
+
     h1, h2, h3, h4, h5, h6 {
       font-family: 'Tahoma';
     }
@@ -94,7 +101,7 @@
 
 
     #gifs {
-      margin-top: 100px;
+      margin-top: 50px;
       text-align: center;
     }
 
@@ -124,22 +131,6 @@
       display: inline-block;
     }
 
-    @media only screen and (max-width: 573px) {
-      #bookmarklets a {
-        display: block;
-        width: 100%;
-        padding: 10px;
-        margin-top: 5px;
-        text-align: center;
-      }
-
-      #gifs img {
-        display: block;
-        width: 100%;
-        margin-bottom: 20px;
-      }
-    }
-
     @media only screen and (max-width: 944px) {
       #container {
         width: 100%;
@@ -164,6 +155,30 @@
         font-size: 1.5em;
       }
     }
+
+    @media only screen and (max-width: 573px) {
+      #bookmarklets a {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        text-align: center;
+      }
+
+      #right {
+        margin-top: 20px;
+      }
+
+      #gifs {
+        margin-top: 20px;
+      }
+
+      #gifs img {
+        display: block;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -174,9 +189,9 @@
       <h2>the best way to save your place on <a href="http://lolcow.farm">lolcow.farm</a></h2>
       <h3>drag these links to your bookmark bar:</h3>
       <p id="bookmarklets"><a href="#" id="lolsave">lolsave</a><a href="#" id="lolrestore">lolrestore</a></p>
-
+      <h4 id="usingaphone">using a phone? <a href="#">click here</a></h4>
       <div id="gifs">
-        <img src="http://placehold.it/500x500" alt="Gif demonstrating lolsave"/><img src="http://placehold.it/500x500" alt="Gif demonstrating lolrestore"/>
+        <img src="lolsave.gif" alt="Gif demonstrating lolsave"/><img src="lolrestore.gif" alt="Gif demonstrating lolrestore"/>
       </div>
     </div><div id="right">
       <h4>some Q's</h4>
