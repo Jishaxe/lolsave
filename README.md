@@ -1,6 +1,8 @@
 # lolsave
 A tiny bookmarklet that saves and restores your viewing place on _lolcow.farm_
 
+[![Jenkins](http://ci.joshbe.me:8080/job/lolsave/badge/icon)](http://ci.joshbe.me:8080/job/lolsave/)
+
 ## Getting the bookmarklets
 I'm using [Bookmarkletify](https://www.npmjs.com/package/bookmarkletify) to generate the bookmarks.
 Install Bookmarkletify globally:
