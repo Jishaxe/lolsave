@@ -155,7 +155,7 @@
     }
 
     textarea {
-      width: 50%;
+      width: 100%;
       height: 200px;
     }
 
@@ -294,6 +294,10 @@
 
       $(".mobileguide_btn").click(show_mobile_guide)
       $(".mobileguide_close").click(hide_mobile_guide)
+
+      $("textarea").focus(function() {
+        $(this).select()
+      })
 
       function show_mobile_guide() {
         $("#mobileguide").slideDown();
