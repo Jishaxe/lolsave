@@ -1,6 +1,6 @@
 {
   "name": "lolsave",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A tiny bookmarklet that saves and restores your viewing place on lowcow.farm",
   "main": "lolsave.js",
   "directories": {
