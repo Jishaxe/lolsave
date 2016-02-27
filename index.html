@@ -149,6 +149,16 @@
       display: inline-block;
     }
 
+
+    #mobileguide {
+      display: none;
+    }
+
+    textarea {
+      width: 50%;
+      height: 200px;
+    }
+
     @media only screen and (max-width: 944px) {
       #container {
         width: 100%;
@@ -207,7 +217,7 @@
       <h2>the best way to save your place on <a href="http://lolcow.farm">lolcow.farm</a></h2>
       <h3>drag these links to your bookmark bar:</h3>
       <p id="bookmarklets"><a href="#" id="lolsave">lolsave</a><a href="#" id="lolrestore">lolrestore</a></p>
-      <h4 id="usingaphone">using a phone? <a href="#">click here</a></h4>
+      <h4 id="usingaphone">using a phone? <a href="javascript:void()" class="mobileguide_btn">click here</a></h4>
       <div id="gifs">
         <img src="lolsave.gif" alt="Gif demonstrating lolsave"/><img src="lolrestore.gif" alt="Gif demonstrating lolrestore"/>
       </div>
@@ -218,12 +228,26 @@
         lolsave will <b>never</b> send your data anywhere else.
         If you want to check this for yourself, you can look at the <a href="https://github.com/Jishaxe/lolsave">source code on github.</a></p>
       <h5>How can I use the bookmarklets on iPhone/Android?</h5>
-      <p>Here's a <a href="#">quick guide.</a></p>
+      <p>Here's a <a href="javascript:void()" class="mobileguide_btn">quick guide.</a></p>
       <h5>How can I delete the data lolsave saves?</h5>
       <p>All you need to do is <a href="http://www.digitaltrends.com/computing/how-to-delete-cookies-in-chrome-firefox-safari-and-ie/">clear your cookies.</a></p>
       <hr/>
       <a class="github-button" href="https://github.com/Jishaxe/lolsave/issues" data-style="mega" data-count-api="/repos/Jishaxe/lolsave#open_issues_count" data-count-aria-label="# issues on GitHub" aria-label="Issue Jishaxe/lolsave on GitHub">Issue</a>
       <a class="github-button" href="https://github.com/Jishaxe/lolsave" data-style="mega" data-count-href="/Jishaxe/lolsave/stargazers" data-count-api="/repos/Jishaxe/lolsave#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star Jishaxe/lolsave on GitHub">Star</a>
+    </div>
+
+    <div id="mobileguide">
+      <h2>Using lolsave on iPhone/Android <a href="javascript:void()" class="mobileguide_close">[x]</a></h2>
+      <h3>Step one: Bookmark this page twice</h3>
+      <h3>Step two: Copy this code</h3>
+      <h4>code for lolsave:</h4>
+      <textarea readonly id="lolsave-code">
+      </textarea>
+      <h4>code for lolrestore:</h4>
+      <textarea readonly id="lolrestore-code">
+      </textarea>
+      <h3>Step three: Edit the bookmarks and paste the code</h3>
+      <a href="javascript:void()" class="mobileguide_close">go back ></a>
     </div>
 
     <h2>Changelog</h2>
@@ -254,6 +278,7 @@
         }
       }).done(function(data) {
         $("#lolsave").attr('href', data)
+        $("#lolsave-code").text(data)
       })
 
       $.ajax({
@@ -264,7 +289,23 @@
         }
       }).done(function(data) {
         $("#lolrestore").attr('href', data)
+        $("#lolrestore-code").text(data)
       })
+
+      $(".mobileguide_btn").click(show_mobile_guide)
+      $(".mobileguide_close").click(hide_mobile_guide)
+
+      function show_mobile_guide() {
+        $("#mobileguide").slideDown();
+        $("#left").slideUp();
+        $("#right").slideUp();
+      }
+
+      function hide_mobile_guide() {
+        $("#mobileguide").slideUp();
+        $("#left").slideDown();
+        $("#right").slideDown();
+      }
     })
   </script>
 </body>
