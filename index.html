@@ -155,8 +155,10 @@
     }
 
     #mobileguide img {
-      height: 300px;
-      width: auto;
+      width: 50%;
+      height: auto;
+      display: inline-block;
+      text-align: center;
     }
 
     textarea {
@@ -165,10 +167,6 @@
     }
 
     @media only screen and (max-width: 944px) {
-      #container {
-        width: 100%;
-      }
-
       h1 {
         font-size: 2em;
       }
@@ -190,12 +188,24 @@
     }
 
     @media only screen and (max-width: 573px) {
+      section#container {
+        width: 95%;
+      }
+
       #bookmarklets a {
         display: block;
         width: 100%;
         padding: 10px;
         margin-top: 5px;
         text-align: center;
+      }
+
+      #usingaphone {
+        font-size: 1.3em;
+        color: red;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: block;
       }
 
       #right {
@@ -244,8 +254,7 @@
     <div id="mobileguide">
       <h2>Using lolsave on iPhone/Android <a href="javascript:void()" class="mobileguide_close">[x]</a></h2>
       <h3>Step one: Bookmark this page twice</h3>
-      <img alt="Step 1" src="step1.jpg"/>
-      <img alt="Step 2" src="step2.jpg"/>
+      <img alt="Step 1" src="step1.jpg"/><img alt="Step 2" src="step2.jpg"/>
       <h3>Step two: Copy this code</h3>
       <h4>code for lolsave:</h4>
       <textarea readonly id="lolsave-code">
@@ -254,7 +263,7 @@
       <textarea readonly id="lolrestore-code">
       </textarea>
       <h3>Step three: Edit the bookmarks and paste the code</h3>
-      <img alt="Step 3" src="step3.jpg"/>
+      <img alt="Step 3" src="step3.jpg"/><br/>
       <i>Happy saving!</i>
       <a href="javascript:void()" class="mobileguide_close">go back ></a>
     </div>
